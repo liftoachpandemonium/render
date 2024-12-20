@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  container1:
+    build:
+      context: ./app1  # Указываем путь к папке с Dockerfile для контейнера №1
+      dockerfile: Dockerfile  # Указываем название Dockerfile в папке app1
+    ports:
+      - "8080:8080"
+    networks:
+      - my_network
+
+  container2:
+    build:
+      context: ./app2  # Указываем путь к папке с Dockerfile для контейнера №2
+      dockerfile: Dockerfile  # Указываем название Dockerfile в папке app2
+    ports:
+      - "8081:8081"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
